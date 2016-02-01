@@ -1,6 +1,7 @@
 package com.minahatami.receiptslist;
 
 import android.content.Intent;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,11 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        NavigationDrawerFragment drawerFragment =  (NavigationDrawerFragment)getFragmentManager().findFragmentById(R.id.fragment_navigate);
+        drawerFragment.setup(R.id.fragment_navigate, drawerLayout,toolbar);
     }
 
     @Override
@@ -40,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-        if(id == R.id.navigate){
+        if (id == R.id.navigate) {
             Intent intent = new Intent(this, SubActivity.class);
             startActivity(intent);
 
